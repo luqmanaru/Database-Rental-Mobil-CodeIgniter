@@ -96,4 +96,4 @@ ORDER BY tahun, bulan;``
 ---
 **luqmanaru**
 
-ni adalah proyek pengembangan web lanjut untuk memenuhi tugas kuliah Pemrograman Web Lanjut
+Ini adalah proyek pengembangan web lanjut untuk memenuhi tugas kuliah Pemrograman Web Lanjut
