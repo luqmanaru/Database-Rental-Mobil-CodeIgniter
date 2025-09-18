@@ -1,0 +1,55 @@
+-- Membuat database rental_mobil
+CREATE DATABASE rental_mobil;
+USE rental_mobil;
+
+-- Membuat tabel admin
+CREATE TABLE admin (
+    id_admin INT(11) PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    nama_admin VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    level ENUM('admin', 'superadmin') DEFAULT 'admin',
+    status ENUM('aktif', 'nonaktif') DEFAULT 'aktif',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Membuat tabel customer
+CREATE TABLE customer (
+    id_customer INT(11) PRIMARY KEY AUTO_INCREMENT,
+    nama_customer VARCHAR(100) NOT NULL,
+    alamat TEXT NOT NULL,
+    no_hp VARCHAR(15) NOT NULL,
+    no_ktp VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Membuat tabel mobil
+CREATE TABLE mobil (
+    id_mobil INT(11) PRIMARY KEY AUTO_INCREMENT,
+    nama_mobil VARCHAR(100) NOT NULL,
+    merk VARCHAR(50) NOT NULL,
+    jenis VARCHAR(50) NOT NULL,
+    plat_nomor VARCHAR(15) NOT NULL,
+    tahun INT(4) NOT NULL,
+    harga_sewa DECIMAL(10,2) NOT NULL,
+    status ENUM('tersedia', 'disewa', 'perbaikan') DEFAULT 'tersedia',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Membuat tabel transaksi
+CREATE TABLE transaksi (
+    id_transaksi INT(11) PRIMARY KEY AUTO_INCREMENT,
+    id_customer INT(11) NOT NULL,
+    id_mobil INT(11) NOT NULL,
+    id_admin INT(11) NOT NULL,
+    tanggal_sewa DATE NOT NULL,
+    tanggal_kembali DATE NOT NULL,
+    total_bayar DECIMAL(10,2) NOT NULL,
+    status ENUM('proses', 'selesai', 'batal') DEFAULT 'proses',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_customer) REFERENCES customer(id_customer),
+    FOREIGN KEY (id_mobil) REFERENCES mobil(id_mobil),
+    FOREIGN KEY (id_admin) REFERENCES admin(id_admin)
+);
