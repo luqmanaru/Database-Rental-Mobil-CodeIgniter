@@ -1,0 +1,25 @@
+-- Mengisi data tabel admin
+INSERT INTO admin (username, password, nama_admin, email, level, status) VALUES
+('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Admin Utama', 'admin@rental.com', 'superadmin', 'aktif'),
+('staff', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Staff Rental', 'staff@rental.com', 'admin', 'aktif');
+
+-- Mengisi data tabel customer
+INSERT INTO customer (nama_customer, alamat, no_hp, no_ktp, email) VALUES
+('Ahmad Fauzi', 'Jl. Merdeka No. 123, Jakarta', '081234567890', '1234567890123456', 'ahmad@email.com'),
+('Siti Nurhaliza', 'Jl. Sudirman No. 456, Bandung', '082345678901', '2345678901234567', 'siti@email.com'),
+('Budi Santoso', 'Jl. Gatot Subroto No. 789, Surabaya', '083456789012', '3456789012345678', 'budi@email.com');
+
+-- Mengisi data tabel mobil
+INSERT INTO mobil (nama_mobil, merk, jenis, plat_nomor, tahun, harga_sewa, status) VALUES
+('Avanza', 'Toyota', 'MPV', 'B 1234 AB', '2020', '300000.00', 'tersedia'),
+('Xenia', 'Daihatsu', 'MPV', 'B 2345 CD', '2019', '280000.00', 'tersedia'),
+('Ertiga', 'Suzuki', 'MPV', 'B 3456 EF', '2021', '320000.00', 'tersedia'),
+('Pajero Sport', 'Mitsubishi', 'SUV', 'B 4567 GH', '2022', '750000.00', 'tersedia'),
+('Alphard', 'Toyota', 'MPV', 'B 5678 IJ', '2021', '1200000.00', 'tersedia');
+
+-- Mengisi data tabel transaksi
+INSERT INTO transaksi (id_customer, id_mobil, id_admin, tanggal_sewa, tanggal_kembali, total_bayar, status) VALUES
+(1, 1, 1, '2023-01-10', '2023-01-13', '900000.00', 'selesai'),
+(2, 2, 2, '2023-01-15', '2023-01-18', '840000.00', 'selesai'),
+(3, 4, 1, '2023-02-01', '2023-02-05', '3000000.00', 'selesai'),
+(1, 5, 2, '2023-02-10', '2023-02-15', '6000000.00', 'proses');
